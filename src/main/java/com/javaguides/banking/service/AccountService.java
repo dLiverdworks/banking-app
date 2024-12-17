@@ -19,4 +19,6 @@ public interface AccountService {
 
     void deleteAccount(Long id);
 
+    AccountDto phoneNumber(String phoneNumber);
+
 }

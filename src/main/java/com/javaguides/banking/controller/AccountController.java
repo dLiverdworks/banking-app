@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController {
@@ -65,5 +67,12 @@ public class AccountController {
     public ResponseEntity<String> deleteAccount(@PathVariable Long id){
         accountService.deleteAccount(id);
         return ResponseEntity.ok("Account is deleted successfully!");
+    }
+
+    // Get Account REST API by phoneNumber
+    @GetMapping("/phone/{phoneNumber}")
+    public ResponseEntity<AccountDto> phoneNumber(@PathVariable String phoneNumber){
+        AccountDto accountDto = accountService.phoneNumber(phoneNumber);
+        return ResponseEntity.ok(accountDto);
     }
 }

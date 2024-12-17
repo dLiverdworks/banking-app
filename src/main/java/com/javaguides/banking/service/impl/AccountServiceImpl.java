@@ -81,4 +81,12 @@ public class AccountServiceImpl implements AccountService {
 
         accountRepository.deleteById(id);
     }
+
+    @Override
+    public AccountDto phoneNumber(String phoneNumber) {
+        Account account = accountRepository
+                .findByPhoneNumber(phoneNumber)
+                .orElseThrow(()-> new RuntimeException("Account with phone number does not exists"));
+        return AccountMapper.mapToAccountDto(account);
+    }
 }

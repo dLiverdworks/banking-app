@@ -20,5 +20,6 @@ public class Account {
 
     @Column(name = "account_holder_name")
     private String accountHolderName;
+    private String phoneNumber;
     private double balance;
 }
